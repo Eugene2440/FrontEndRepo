@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgba(40,57,101,.9);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background-color: #ffd31d;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      color: #333333;
+      padding: 13px;
+      width: 100%;
+      max-width: 400px;
+      text-align:left;
+      font-size: 13px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      padding: 16px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      color: #333333;
+      height: 30px;
+    }
+
+    button.registerbtn {
+      background-color: rgba(40,57,101,.9);
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      align-items: center;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 50%;
+      transition: background-color 0.3s;
+    }
+
+    button.registerbtn:hover {
+
+      filter: brightness(1.1);
+    }
+
+
+    .container.signin {
+      margin-bottom: -20px;
+
+    }
+
+    .container.signin p {
+      margin: 0;
+    }
+
+    a {
+      color: dodgerblue;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+    .profile-picture {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-picture img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(40,57,101,.9);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      margin-top:-28px ;
+            font-size: 24px; /* Adjust the font size as needed */
+            text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="profile-picture">
+      <img src="/assets/i.webp" alt="Profile Picture">
+    </div>
+    <div class="container">
+      <h1>Login</h1>
+            <label for="email"><b>RegNo</b></label>
+      <input type="text" placeholder="Enter RegNo" name="RegNo" id="RegNo" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+
+      <button type="submit" class="registerbtn">Login</button>
+    </div>
+
+    <div class="container signin">
+      <p>Don't have an account? <a [routerLink]="['/Register']" routerLinkActive="active">Sign up</a>.</p>
+    </div>
+  </div>
+</body>
+
+</html>
