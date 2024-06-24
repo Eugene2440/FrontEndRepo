@@ -1,0 +1,19 @@
+
+
+
+<div class="page">
+    <app-student-sidebar [firstName]="getFirstName()" ></app-student-sidebar>
+    <div class="main-content">
+        <h3>My Units</h3>
+        <div class="cards-container">
+          <div *ngFor="let unit of myUnits" class="card" (click)="viewUnitDetails(unit.unitId)">
+            <div class="card-header">
+              <img src="https://via.placeholder.com/50" alt="Unit Icon">
+              <h3>{{ unit.unitName }}</h3>
+            </div>
+            <div class="card-body">
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="page">
+  <app-sidebar></app-sidebar>
+  <div class="main-content">
+    <div class="button">
+      <button (click)="viewUnitDetails(unitId)">View</button>
+      <button>Edit</button>
+    </div>
+    <h3>Unit Details</h3>
+    <div *ngFor="let week of weeks" class="week-container">
+      <h4>Week {{ week.weekNumber }}</h4>
+           <div class="add-topic-form" [formGroup]="topicForm">
+        <input formControlName="topicName" type="text" placeholder="Topic Name" class="input-field">
+        <input formControlName="file" type="file" class="field" (change)="onFileSelected($event)">
+        <input formControlName="link" type="text" placeholder="Link" class="input-field">
+        <button class="add-topic-btn" (click)="addTopic(week.weekId)">Add Topic</button>
+      </div>
+    </div>
+  </div>
+</div>

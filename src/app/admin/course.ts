@@ -1,8 +1,9 @@
 import { Unit } from "./unit";
+import { Year } from "./year";
 
 export interface Course {
   courseId: number;
   courseName: string;
-  units: Unit[];
-  showUnits?: boolean; 
+  years: Year[];
+  showUnits?: boolean;
 }

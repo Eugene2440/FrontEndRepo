@@ -1,0 +1,334 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/boxicons@2.1.1/css/boxicons.min.css')
+;
+.page {
+  font-family: 'Poppins', sans-serif;
+  background-color: #2c3e50;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-height: 100vh;
+  color: #797979;
+}
+
+.sidebar {
+  background-color: #2c3e50;
+  color: white;
+  width: 250px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  height: 100%;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  margin: 10px 0;
+  padding: 10px;
+  display: block;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-content {
+  margin-left: 270px; /* Adjust according to sidebar width */
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.cardlec{
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    color: #2c3e50;
+    padding: 15px;
+    width: 100%;
+    max-width: 800px;
+    text-align: left;
+    font-size: 13px;
+    margin-bottom: 30px;
+    margin-left:50px;
+}
+table, th, td {
+border: 0.6px solid #ddd;
+}
+
+th, td {
+padding: 4px;
+text-align: left;
+}
+
+th {
+background-color: #2c3e50;
+color: white;
+}
+
+tr:nth-child(even) {
+background-color: #f2f2f2;
+}
+h1, h2 {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+.select-container {
+  position: relative;
+}
+
+/* Input elements styling */
+input[type="text"],
+input[type="password"],
+input[type="email"]
+ {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #2c3e50;
+  font-family: 'Poppins', sans-serif;
+  height: 30px;
+}
+
+/* Specific styling for select element */
+select {
+  color: #2c3e50;
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+
+
+.select-arrow {
+  position: absolute;
+  right: 10px; /* Adjust as needed */
+  top: calc(50% - 8px); /* Center vertically */
+  color: #2c3e50; /* Match the color of other input elements */
+  font-size: 16px; /* Adjust size as needed */
+  pointer-events: none; 
+  margin-top: 5px;/* Prevent the icon from blocking clicks */
+}
+
+/* Custom styling for select element when focused */
+/* Remove default outline */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+button.addbtn {
+background-color: #28a745;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+font-family: 'Poppins', sans-serif;
+margin-bottom: 10px;
+}
+button.eeditbtn{
+  background-color: #dbc923;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.coursebtn
+{margin: 5px;justify-items: center;}
+button.addbtn:hover {
+filter: brightness(1.1);
+}
+button.registerbtn {
+  background-color: #2c3e50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+  transition: background-color 0.3s;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button.registerbtn:hover {
+  filter: brightness(1.1);
+}
+button.editbtn {
+background-color: #007bff;
+color: white;
+padding: 5px 10px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+font-family: 'Poppins', sans-serif;
+font-size: 12px;
+}
+
+button.editbtn:hover {
+filter: brightness(1.1);
+}
+
+button.deletebtn {
+background-color: #dc3545;
+color: white;
+padding: 5px 10px;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+font-family: 'Poppins', sans-serif;
+font-size: 12px;
+}
+
+button.deletebtn:hover {
+filter: brightness(1.1);
+}
+button.unitbtn {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  }
+  
+  button.unitbtn:hover {
+  filter: brightness(1.1);
+  }
+  
+
+.action-buttons {
+display: flex;
+justify-content: space-around;
+gap: 2px;
+
+}
+.edit-buttons{
+display: flex;
+justify-content: space-around;
+gap: 2px;
+}
+.wrapper {
+    zoom: 0.9;
+  }
+  .course-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+  }
+  
+  .course-row {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .course-name {
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .year-table-container {
+    padding: 10px;
+  }
+  
+  .year-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+  }
+  
+  .year-row {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .year-name {
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .semester-table-container {
+    padding: 10px;
+  }
+  
+  .semester-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+  }
+  
+  .semester-row {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .semester-name {
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .unit-list-container {
+    padding: 10px;
+  }
+  
+  .unit-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .unit-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+ 
+
+ .cardunit{
+  background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    color: #2c3e50;
+    padding: 15px;
+    width: 100%;
+    max-width:200px;
+    text-align: left;
+    font-size: 13px;
+    margin-bottom: 30px;
+    margin-left:1000px;
+    margin-top:-700px;
+ }
+ 

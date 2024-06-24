@@ -1,0 +1,26 @@
+<div class="page">
+  <app-sidebar></app-sidebar>
+  <div class="main-content">
+    <div class="button">
+      <button>View</button>
+      <button>Edit</button>
+    </div>
+    <h3>Unit Details</h3>
+    <div *ngFor="let week of weeks" class="week-container">
+      <h4>Week {{ week.weekNumber }}: </h4>
+      <div *ngFor="let topic of week.topics" class="topic-container">
+        <div>
+          <strong>Topic Name:</strong> {{ topic.topicName }}
+        </div>
+        <div>
+          <strong>Link:</strong> <a [href]="topic.link">{{ topic.link }}</a>
+        </div>
+        <div *ngIf="topic.fileBytes">
+          <strong>File:</strong> 
+          <a [href]="'data:application/octet-stream;base64,' + topic.fileBytes" download="file.txt">Download File</a>
+        </div>
+        <!-- Add more details as needed -->
+      </div>
+    </div>
+  </div>
+</div>

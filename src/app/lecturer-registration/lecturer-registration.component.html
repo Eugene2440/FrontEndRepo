@@ -1,0 +1,61 @@
+<div class="ccontainer">
+  <div class="card">
+    <div class="profile-picture">
+      <img src="/assets/e.webp" alt="Profile Picture">
+    </div>
+    <div *ngIf="!showVerificationCode && !showPasswordForm && !showWelcomeMessage ">
+      <form [formGroup]="registrationForm" (ngSubmit)="LecturerVerificationCode()">
+        <div class="container">
+          <label for="regNo"><b>Registration Number</b></label>
+          <input type="text" formControlName="regNo" placeholder="Enter Registration Number" id="regNo" required>
+          <div *ngIf="registrationForm.get('regNo')?.invalid && (registrationForm.get('regNo')?.dirty || registrationForm.get('regNo')?.touched)" class="error">
+            <span *ngIf="registrationForm.get('regNo')?.hasError('required')">Registration Number is required.</span>
+            <span *ngIf="registrationForm.get('regNo')?.hasError('pattern')">Invalid Registration Number format.</span>
+          </div>
+        </div>
+        <div class="button-container">
+          <button type="submit" class="registerbtn">Send Verification Code</button>
+        </div>
+      </form>
+    </div>
+    <form [formGroup]="confirmationForm" (ngSubmit)="confirmVerificationCode()" *ngIf="showVerificationCode">
+      <div class="container">
+        <label for="verificationCode"><b>Verification Code</b></label>
+        <input type="text" formControlName="verificationCode" placeholder="Enter Verification Code" id="verificationCode" required>
+        <div *ngIf="confirmationForm.get('verificationCode')?.invalid && (confirmationForm.get('verificationCode')?.dirty || confirmationForm.get('verificationCode')?.touched)" class="error">
+          <span *ngIf="confirmationForm.get('verificationCode')?.hasError('required')">Verification Code is required.</span>
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="submit" class="registerbtn">Confirm Verification Code</button>
+      </div>
+    </form>
+    <form [formGroup]="passwordForm" (ngSubmit)="changePassword()" *ngIf="showPasswordForm">
+      <div class="container">
+        <label for="newPassword"><b>New Password</b></label>
+        <input type="password" formControlName="newPassword" placeholder="Enter New Password" id="newPassword" required>
+        <div *ngIf="passwordForm.get('newPassword')?.invalid && (passwordForm.get('newPassword')?.dirty || passwordForm.get('newPassword')?.touched)" class="error">
+          <span *ngIf="passwordForm.get('newPassword')?.hasError('required')">New Password is required.</span>
+          <span *ngIf="passwordForm.get('newPassword')?.hasError('minlength')">New Password must be at least 8 characters long.</span>
+        </div>
+      </div>
+      <div class="container">
+        <label for="confirmPassword"><b>Confirm Password</b></label>
+        <input type="password" formControlName="confirmPassword" placeholder="Confirm New Password" id="confirmPassword" required>
+        <div *ngIf="passwordForm.get('confirmPassword')?.invalid && (passwordForm.get('confirmPassword')?.dirty || passwordForm.get('confirmPassword')?.touched)" class="error">
+          <span *ngIf="passwordForm.get('confirmPassword')?.hasError('required')">Confirm Password is required.</span>
+        </div>
+        <div *ngIf="message" class="error-message">
+          {{ message }}
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="submit" class="registerbtn">Change Password</button>
+      </div>
+    </form>
+    <div class="container" *ngIf="showWelcomeMessage">
+      <h2>Welcome, Kilar</h2>
+      <p>You have successfully changed your password. Would you like to <a routerLink="/LecturerLogin">log in to your account</a>?</p>
+    </div>
+  </div>
+</div>

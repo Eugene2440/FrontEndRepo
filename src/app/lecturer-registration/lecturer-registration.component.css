@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+.ccontainer {
+  font-family: 'Poppins', sans-serif;
+  background-color: #2c3e50;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  color: #2c3e50;
+  padding: 13px;
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+  font-size: 13px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height:270px;
+
+}
+.container {
+  position: relative;
+  padding-left: 16px; /* Adjust padding to make space for the bullet */
+}
+
+.bullet {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: #2c3e50;
+  border-radius: 50%;
+  animation: pulsate 1s infinite ease-in-out;
+  margin-top: -28px;
+}
+.bulclet{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background-color: #2c3e50;
+  border-radius: 50%;
+  animation: pulsate 1s infinite ease-in-out;
+  margin-top: -32px;
+}
+
+@keyframes pulsate {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #2c3e50;
+  font-family: 'Poppins', sans-serif;
+  height: 30px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button.registerbtn {
+  background-color: #2c3e50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+  transition: background-color 0.3s;
+  font-family: 'Poppins', sans-serif;
+display: flex;
+flex-direction: row;
+  margin-bottom: -5px;
+
+}
+
+button.registerbtn:hover {
+  filter: brightness(1.1);
+}
+
+.container.signin {
+  margin-bottom: -20px;
+  text-align: center;
+}
+
+.container.signin p {
+  margin: 0;
+}
+
+a {
+  color: dodgerblue;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.profile-picture {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+h1 {
+  margin-top: -28px;
+  font-size: 24px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}

@@ -1,0 +1,34 @@
+<div class="background-container">
+    <div class="card">
+      <form class="form" (ngSubmit)="onSubmit()">
+        <div class="subtainer">
+          <label for="courseName">Course Name:</label>
+          <input type="text" id="courseName" [(ngModel)]="course.courseName" name="courseName" required>
+        </div>
+        <button type="button" (click)="addYear()" class="button add-year-btn">Add Year</button>
+        <mat-accordion class="bigaccordion" *ngFor="let year of course.years; let yIndex = index">
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title  class="title">Year {{ year.yearNumber }}</mat-panel-title>
+            </mat-expansion-panel-header>
+            <button type="button" (click)="addSemester(yIndex)" class="button add-semester-btn">Add Semester</button>
+            <mat-accordion class="smallaccordion" *ngFor="let semester of year.semesters; let sIndex = index">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>Semester {{ semester.semesterNumber }}</mat-panel-title>
+                </mat-expansion-panel-header>
+                <button type="button" (click)="addUnit(yIndex, sIndex)" class="button add-unit-btn">Add Unit</button>
+                <div *ngFor="let unit of semester.units; let uIndex = index" class="form-group input-with-button">
+                    <input type="text" id="unitName-{{yIndex}}-{{sIndex}}-{{uIndex}}" [(ngModel)]="unit.unitName" name="unitName-{{yIndex}}-{{sIndex}}-{{uIndex}}" required>
+                    <button type="button" (click)="removeUnit(yIndex, sIndex, uIndex)" class="butt">Remove</button>
+                  </div>
+                  
+              </mat-expansion-panel>
+            </mat-accordion>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <button type="submit" class="button submit-button">Submit</button>
+      </form>
+    </div>
+  </div>
+  

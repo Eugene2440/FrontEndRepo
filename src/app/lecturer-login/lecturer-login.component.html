@@ -1,0 +1,46 @@
+<div class="ccontainer">
+  <div class="card">
+    <div class="profile-picture">
+      <img src="/assets/e.webp" alt="Profile Picture">
+    </div>
+
+    <!-- Step 1: Enter Registration Number -->
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="container">
+        <label for="RegNo"><b>Registration Number</b></label>
+        <input
+          type="text"
+          formControlName="regNo"
+          placeholder="Enter Registration Number"
+          id="RegNo"
+        />
+        <div *ngIf="loginForm.get('regNo')?.invalid && (loginForm.get('regNo')?.dirty || loginForm.get('regNo')?.touched)" class="error">
+          <span *ngIf="loginForm.get('regNo')?.hasError('required')">Registration Number is required.</span>
+          <span *ngIf="loginForm.get('regNo')?.hasError('pattern')">Invalid Registration Number format.</span>
+        </div>
+
+        <label for="password"><b>Password</b></label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Enter password"
+          id="password"
+        />
+        <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="error">
+          <span *ngIf="loginForm.get('password')?.hasError('required')">Password is required.</span>
+          <span *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 8 characters long.</span>
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="submit" class="registerbtn" [disabled]="loginForm.invalid">Login</button>
+      </div>
+      <div *ngIf="message" class="error-message">
+        {{ message }}
+      </div>
+    </form>
+    
+  </div>
+  <div class="registration-link">
+    <p>Don't have an account? <a [routerLink]="['/LecturerRegistration']">Register here</a></p>
+  </div>
+</div>

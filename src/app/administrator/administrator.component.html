@@ -1,0 +1,303 @@
+<div class="page">
+  <div class="wrapper">
+    <div class="sidebar">
+      <div>
+        <h2>Admin Dashboard</h2>
+        <a href="#" (click)="sideBar('Students')">Manage Students</a>
+        <a href="#" (click)="sideBar('Lecturers')">Manage Lecturers</a>
+        <a href="#" (click)="sideBar('Courses')">Manage Courses</a>
+
+      </div>
+    </div>
+
+    <div class="main-content" *ngIf="sideBarItem === 'Students'">
+      <div class="cardlec" id="students">
+        <div *ngIf="!showAddStudentForm &&!showEditStudentForm">
+          <h2>Students List</h2>
+          <button class="addbtn" (click)="AddStudentForm()">Add Student</button>
+          <table>
+            <thead>
+              <tr>
+                <th>Firstname</th>
+                <th>Surname</th>
+                <th>Registration Number</th>
+                <th>Course</th>
+                <th>Email</th>
+                <th>Year</th>
+                <th>Actions</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Example row -->
+              <tr *ngFor="let student of students">
+                <td>{{ student.firstName }}</td>
+                <td>{{ student.surName }}</td>
+                <td>{{ student.regNo }}</td>
+                <!-- <td>{{ student.course }}</td> -->
+                <td>{{ student.email }}</td>
+                <td>{{ student.year }}</td>
+
+                <td class="action-buttons">
+                  <button class="editbtn" (click)="editStudent(student)">Edit</button>
+                  <button class="deletebtn" (click)="openDeleteDialog(student)">Delete</button>
+                </td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
+
+        <form [formGroup]="addForm" *ngIf="showAddStudentForm" (ngSubmit)="registerStudent()">
+          <h2>Add Students</h2>
+          <label for="firstname">First Name</label>
+          <input type="text" id="firstname" formControlName="firstname" placeholder="Enter First Name" required>
+          <label for="middleName">Middle Name</label>
+          <input type="text" id="middlename" formControlName="middlename" placeholder="Enter Middle Name(Optional) "
+            required>
+
+          <label for="surname">Surname</label>
+          <input type="text" id="surname" formControlName="surname" placeholder="Enter Surname" required>
+
+          <label for="studentRegNo">Registration Number</label>
+          <input type="text" id="studentRegNo" formControlName="registrationNumber"
+            placeholder="Enter Registration Number" required>
+
+         
+
+          <label for="year">Year</label>
+          <input type="text" id="year" formControlName="year" placeholder="Enter Year" required>
+
+          <label for="studentEmail">Email</label>
+          <input type="email" id="studentEmail" formControlName="email" placeholder="Enter Student Email" required>
+          
+            <label for="course">Course</label>
+            <select id="course" formControlName="courseId">
+              <option  *ngFor="let course of courses" [value]="course.courseId">{{ course.courseName }}</option>
+            </select>
+          
+          <div class="edit-buttons">
+            <button type="submit" class="registerbtn">Add Student</button>
+            <button type="button" class="registerbtn" (click)="closeForms()">Cancel</button>
+          </div>
+        </form>
+
+        <form *ngIf="showEditStudentForm" [formGroup]="editForm" (ngSubmit)="saveChanges()">
+          <h2>Edit Student</h2>
+          <label for="firstname">First Name</label>
+          <input type="text" id="firstname" formControlName="firstName" placeholder="Enter First Name" required>
+
+          <label for="surname">Surname</label>
+          <input type="text" id="surname" formControlName="surName" placeholder="Enter Surname" required>
+
+          <label for="studentRegNo">Registration Number</label>
+          <input type="text" id="regNo" formControlName="regNo" placeholder="Enter Registration Number" required>
+
+          <label for="course">Course</label>
+          <input type="text" id="course" formControlName="course" placeholder="Enter Course" required>
+
+          <label for="year">Year</label>
+          <input type="text" id="year" formControlName="year" placeholder="Enter Year" required>
+
+          <label for="studentEmail">Email</label>
+          <input type="email" id="studentEmail" formControlName="email" placeholder="Enter Student Email" required>
+
+          <div class="edit-buttons">
+            <button type="submit" class="registerbtn">Save Changes</button>
+            <button type="button" class="registerbtn" (click)="closeForms()">Cancel</button>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+
+    <div class="main-content" *ngIf="sideBarItem === 'Lecturers'">
+      <div class="cardlec" id="lecturers">
+        <div *ngIf="!showAddLecForm &&!showEditLecForm &&!showAllocationForm">
+          <h2>Lecturer List</h2>
+          <button class="addbtn" (click)="AddLecturerForm()">Add Lecturers</button>
+          <table>
+            <thead>
+              <tr>
+                <th>Firstname</th>
+                <th>Surname</th>
+                <th>LecturerID</th>
+                <th>School</th>
+
+                <th>Email</th>
+                <th>Phone Number</th>
+
+                <th>Actions</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Example row -->
+              <tr *ngFor="let lecturer of lecturers">
+                <td>{{ lecturer.firstName }}</td>
+                <td>{{ lecturer.surName }}</td>
+                <td>{{ lecturer.regNo }}</td>
+                <td>{{ lecturer.school }}</td>
+
+                <td>{{ lecturer.email }}</td>
+                <td>{{ lecturer.phoneNumber }}</td>
+
+                <td class="action-buttons">
+                  <button class="editbtn" (click)="editLecturer(lecturer)">Edit</button>
+                  <button class="deletebtn" (click)="openDeleteLecDialog(lecturer)">Delete</button>
+                  <button class="unitbtn" (click)="allocateUnitForm(lecturer)">Units </button>
+
+
+                </td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
+        <form [formGroup]="addLecForm" *ngIf="showAddLecForm " (ngSubmit)="registerLecturer()">  
+          <h2>Add Lecturer</h2>
+          <label for=" firstname">First Name</label>
+          <input type="text" id="firstname" formControlName="firstName" placeholder="Enter First Name" required>
+
+          <label for="middlename">Middle Name</label>
+          <input type="text" id="middlename" formControlName="middleName" placeholder="Enter Middle Name (Optional)"
+            required>
+
+          <label for="surname">Surname</label>
+          <input type="text" id="surname" formControlName="surName" placeholder="Enter Surname" required>
+
+          <label for="lecCode">Registration Number</label>
+          <input type="text" id="regNo" formControlName="regNo" placeholder="Enter Registration Number" required>
+
+          <label for="school">School</label>
+          <input type="text" id="school" formControlName="school" placeholder="Enter School" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" placeholder="Enter Email" required>
+
+          <label for="phoneNumber">Phone</label>
+          <input type="text" id="phoneNumber" formControlName="phoneNumber" placeholder="Enter Phone" required>
+          <div class="edit-buttons">
+            <button type="submit" class="registerbtn">Submit</button>
+            <button type="button" class="registerbtn" (click)="closeForms()">Cancel</button>
+          </div>
+        </form>
+
+
+
+
+
+
+
+
+
+        <form [formGroup]="editLecForm" *ngIf="showEditLecForm" (ngSubmit)="saveLecturerChanges()">
+          <h2>Edit Lecturer</h2>
+
+          <label for="firstname">First Name</label>
+          <input type="text" id="firstname" formControlName="firstName" placeholder="Enter First Name" required>
+
+          <label for="middlename">Middle Name</label>
+          <input type="text" id="middlename" formControlName="middleName" placeholder="Enter Middle Name (Optional)">
+
+          <label for="surname">Surname</label>
+          <input type="text" id="surname" formControlName="surName" placeholder="Enter Surname" required>
+
+          <label for="lecCode">LecturerID</label>
+          <input type="text" id="lecCode" formControlName="lecCode" placeholder="Enter LecturerID" required readonly>
+
+          <label for="school">School</label>
+          <input type="text" id="school" formControlName="school" placeholder="Enter School" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" placeholder="Enter Email" required>
+
+          <label for="phoneNumber">Phone</label>
+          <input type="text" id="phoneNumber" formControlName="phoneNumber" placeholder="Enter Phone" required>
+
+          <div class="edit-buttons">
+            <button type="submit" class="registerbtn">Update Lecturer</button>
+            <button type="button" class="registerbtn" (click)="closeForms()">Cancel</button>
+          </div>
+        </form>
+
+        <form [formGroup]="allocationForm" *ngIf="showAllocationForm" (ngSubmit)="allocateUnits()">
+          <input type="hidden" formControlName="lecturerId" [value]="selectedLecturerId">
+
+          <div *ngFor="let course of courses">
+            <h3>{{ course.courseName }}</h3>
+            <div class="year-row">
+              <div *ngFor="let year of course.years" class="year-column">
+                <h4>Year {{ year.yearNumber }}</h4>
+                <div class="semester-columns">
+                  <div *ngFor="let semester of year.semesters" class="semester-column">
+                    <h5>Semester {{ semester.semesterNumber }}</h5>
+                    <div *ngFor="let unit of semester.units; let unitIndex = index">
+                      <label>
+                        <input type="checkbox" (change)="onUnitChange(unit, $event)"> {{ unit.unitName }}
+                      </label>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="edit-buttons">
+            <button type="submit" class="registerbtn">Submit</button>
+            <button type="button" class="registerbtn" (click)="closeForms()">Cancel</button>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content" *ngIf="sideBarItem === 'Courses'">
+    <div class="cardlec" id="courses">
+
+      <h2>Manage Courses</h2>
+      <div class="coursebtn"> <button class="addbtn" [routerLink]="['/Course']" routerLinkActive="active">Add
+          Courses</button>
+        <button class="eeditbtn" (click)="navigate()">Edit Courses</button>
+      </div>
+
+      <form>
+        <table class="course-table">
+          <tr *ngFor="let course of courses" class="course-row">
+            <td class="course-name">{{ course.courseName }}</td>
+            <td class="year-table-container">
+              <table class="year-table">
+                <tr *ngFor="let year of course.years" class="year-row">
+                  <td class="year-name">Year {{ year.yearNumber }}</td>
+                  <td class="semester-table-container">
+                    <table class="semester-table">
+                      <tr *ngFor="let semester of year.semesters" class="semester-row">
+                        <td class="semester-name">Semester {{ semester.semesterNumber }}</td>
+                        <td class="unit-list-container">
+                          <ul class="unit-list">
+                            <li *ngFor="let unit of semester.units" class="unit-item">
+                              {{ unit.unitName }}
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+
+
+</div>

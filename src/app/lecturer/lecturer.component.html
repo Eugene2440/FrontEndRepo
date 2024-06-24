@@ -1,0 +1,25 @@
+<div class="page">
+  <div class="sidebar">
+    <div>
+      <h2>Welcome</h2>
+      <div class="profile-picture">
+        <img src="/assets/e.webp" alt="Profile Picture">
+      </div>
+      <a href="#">Calendar</a>
+
+      <a href="#">Notifications</a>
+      <a href="#">Quizes</a>
+      <a href="#">Student Submissions</a>
+      <a href="#">Settings</a>
+      <a href="#">SignOut</a>
+    </div>
+  </div>
+  <div class="main-content"> 
+    <h3>Teaching Units</h3>
+    <div class="cards-container">
+      <div *ngFor="let unit of teachingUnits" class="card"(click)="viewUnitDetails(unit.unitId)">
+        <p>{{ unit.unitName }}</p>
+             </div>
+    </div>
+  </div>
+</div>
